@@ -19,16 +19,20 @@ with open("hills.txt") as f:
     r = csv.DictReader(f, delimiter="|")
     hill = random.choice(list(r))
 
-def county(hill):
+def locale(hill):
    c = hill["COUNTY_NAME"]
-   if hill["STATE_ALPHA"] == "LA":
-      return c + " Parish"
-   return c + " County"
+   s = hill["STATE_ALPHA"]
+   if s == "LA":
+      return c + " Parish, LA"
+   if s in ["GU", "DC"]:
+      return c
+   if s in ["VI", "PW", "AS"]:
+      return c + ", " + s
+   return c + " County, " + s
 
-message = "{} ({}, {})".format(
+message = "{} ({})".format(
    hill["FEATURE_NAME"],
-   county(hill),
-   hill["STATE_ALPHA"])
+   locale(hill))
 
 map_url = "https://maps.googleapis.com/maps/api/staticmap?size=504x252&maptype=terrain&markers=color:green%7C{},{}&key={}".format(
    hill["PRIM_LAT_DEC"],
