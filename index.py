@@ -26,7 +26,7 @@ def locale(hill):
       return c + " Parish, LA"
    if s in ["GU", "DC"]:
       return c
-   if s in ["VI", "PW", "AS"]:
+   if s in ["VI", "PW", "AS", "AK"]:
       return c + ", " + s
    return c + " County, " + s
 
