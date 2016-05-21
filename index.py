@@ -34,12 +34,19 @@ message = "{} ({})".format(
    hill["FEATURE_NAME"],
    locale(hill))
 
+lat = hill["PRIM_LAT_DEC"]
+lng = hill["PRIM_LONG_DEC"]
+
 map_url = "https://maps.googleapis.com/maps/api/staticmap?size=504x252&maptype=terrain&markers=color:green%7C{},{}&key={}".format(
-   hill["PRIM_LAT_DEC"],
-   hill["PRIM_LONG_DEC"],
+   lat,
+   lng,
    credentials["maps_api_key"])
 
 def handler(event, context):
    response = client.upload_media(media=StringIO(requests.get(map_url).content))
-   client.update_status(status=message, media_ids=[response["media_id"]])
+   client.update_status(
+        status=message,
+        lat=lat,
+        long=lng,
+        media_ids=[response["media_id"]])
 

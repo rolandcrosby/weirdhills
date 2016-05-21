@@ -64,3 +64,4 @@ target/
 credentials.json
 *.dist-info/
 hills.txt
+.python-version
