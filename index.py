@@ -30,12 +30,15 @@ def locale(hill):
       return c + ", " + s
    return c + " County, " + s
 
-message = "{} ({})".format(
-   hill["FEATURE_NAME"],
-   locale(hill))
-
 lat = hill["PRIM_LAT_DEC"]
 lng = hill["PRIM_LONG_DEC"]
+
+maps_link = "http://maps.google.com/?ll={},{}".format(lat, lng)
+
+message = "{} ({}) {}".format(
+   hill["FEATURE_NAME"],
+   locale(hill),
+   maps_link)
 
 map_url = "https://maps.googleapis.com/maps/api/staticmap?size=504x252&maptype=terrain&markers=color:green%7C{},{}&key={}".format(
    lat,
