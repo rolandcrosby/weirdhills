@@ -33,7 +33,7 @@ def locale(hill):
 lat = hill["PRIM_LAT_DEC"]
 lng = hill["PRIM_LONG_DEC"]
 
-maps_link = "http://maps.google.com/?ll={},{}".format(lat, lng)
+maps_link = "http://maps.google.com/?ll={},{}&t=p&z=15".format(lat, lng)
 
 message = "{} ({}) {}".format(
    hill["FEATURE_NAME"],
