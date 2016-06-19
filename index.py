@@ -22,9 +22,14 @@ with open("hills.txt") as f:
 def locale(hill):
    c = hill["COUNTY_NAME"]
    s = hill["STATE_ALPHA"]
+   if c.endswith(" (city)") or c.endswith(" (CA)"):
+     # "Richmond (city)" => "Richmond"
+     c = c.rsplit(" (", 1)[0]
+     return c + ", " + s
    if s == "LA":
       return c + " Parish, LA"
    if s in ["GU", "DC"]:
+     # "Guam", "District of Columbia"
       return c
    if s in ["VI", "PW", "AS", "AK"]:
       return c + ", " + s
