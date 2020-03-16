@@ -45,7 +45,7 @@ message = "{} ({}) {}".format(
    locale(hill),
    maps_link)
 
-map_url = "https://maps.googleapis.com/maps/api/staticmap?size=504x252&maptype=terrain&markers=color:green%7C{},{}&key={}".format(
+map_url = "https://maps.googleapis.com/maps/api/staticmap?size=504x252&maptype=terrain&markers=color:green%7C{},{}&scale=2&key={}".format(
    lat,
    lng,
    credentials["maps_api_key"])
